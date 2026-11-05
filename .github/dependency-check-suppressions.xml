@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suppressions xmlns="https://jeremylong.github.io/DependencyCheck/suppression"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="https://jeremylong.github.io/DependencyCheck/suppression https://jeremylong.github.io/dependency-check/suppressions/dependency-check-suppression.xsd">
+  <!-- Add project-specific suppressions here only with a documented justification. -->
+</suppressions>

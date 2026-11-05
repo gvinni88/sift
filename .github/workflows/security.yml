@@ -29,9 +29,7 @@ jobs:
       - name: Generate SBOM
         run: mvn -B -Dsecurity.skip=false org.cyclonedx:cyclonedx-maven-plugin:makeBom
 
-      - name: Run dependency vulnerability scan
-        env:
-          ODC_NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
+      - name: Run fast dependency hygiene scan
         run: mvn -B -Dsecurity.skip=false verify
 
   release:

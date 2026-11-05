@@ -2,6 +2,7 @@
 .claude/
 .copilot/
 */target/*
+target/
 # Compiled class file
 *.class
 

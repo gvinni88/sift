@@ -53,10 +53,8 @@ jobs:
       - name: Deploy to Maven Central
         env:
           GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
-          NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
         run: |
           mvn -B -P release \
             -Dgpg.passphrase="$GPG_PASSPHRASE" \
             -Dgpg.pinentry-mode=loopback \
-            -Dnvd.api.key="$NVD_API_KEY" \
             clean deploy

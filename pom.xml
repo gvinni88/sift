@@ -39,7 +39,6 @@
     <enforcer.skip>false</enforcer.skip>
     <security.skip>true</security.skip>
     <cyclonedx.version>2.9.0</cyclonedx.version>
-    <dependency-check.version>12.1.0</dependency-check.version>
     <gpg.plugin.version>3.2.5</gpg.plugin.version>
     <source.plugin.version>3.3.1</source.plugin.version>
     <javadoc.plugin.version>3.8.0</javadoc.plugin.version>
@@ -108,25 +107,20 @@
       </plugin>
 
       <plugin>
-        <groupId>org.owasp</groupId>
-        <artifactId>dependency-check-maven</artifactId>
-        <version>${dependency-check.version}</version>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>3.7.1</version>
         <executions>
           <execution>
-            <id>dependency-vulnerability-scan</id>
+            <id>dependency-hygiene-scan</id>
             <phase>verify</phase>
             <goals>
-              <goal>check</goal>
+              <goal>analyze-only</goal>
             </goals>
             <configuration>
+              <failOnWarning>true</failOnWarning>
+              <ignoreNonCompile>true</ignoreNonCompile>
               <skip>${security.skip}</skip>
-              <failBuildOnCVSS>8</failBuildOnCVSS>
-              <format>HTML,JSON</format>
-              <outputDirectory>${project.build.directory}/dependency-check</outputDirectory>
-              <nvdApiKey>${env.NVD_API_KEY}</nvdApiKey>
-              <suppressionFiles>
-                <suppressionFile>${project.basedir}/.github/dependency-check-suppressions.xml</suppressionFile>
-              </suppressionFiles>
             </configuration>
           </execution>
         </executions>

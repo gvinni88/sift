@@ -3,6 +3,23 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
+  <name>SIFT</name>
+  <description>Architecture intelligence and code visualization for Java projects.</description>
+  <url>https://github.com/gvinni88/sift</url>
+
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
+
+  <scm>
+    <connection>scm:git:https://github.com/gvinni88/sift.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/gvinni88/sift.git</developerConnection>
+    <url>https://github.com/gvinni88/sift</url>
+  </scm>
+
   <groupId>com.scrupulouslysifted.sift</groupId>
   <artifactId>sift-parent</artifactId>
   <version>1.0.0</version>
@@ -56,6 +73,17 @@
             </configuration>
           </execution>
         </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.sonatype.central</groupId>
+        <artifactId>central-publishing-maven-plugin</artifactId>
+        <version>0.7.0</version>
+        <extensions>true</extensions>
+        <configuration>
+          <publishingServerId>central</publishingServerId>
+          <autoPublish>false</autoPublish>
+        </configuration>
       </plugin>
 
       <plugin>
@@ -127,6 +155,16 @@
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-javadoc-plugin</artifactId>
             <version>${javadoc.plugin.version}</version>
+            <configuration>
+              <doclint>none</doclint>
+              <tags>
+                <tag>
+                  <name>implSpec</name>
+                  <placement>a</placement>
+                  <head>Implementation specification:</head>
+                </tag>
+              </tags>
+            </configuration>
             <executions>
               <execution>
                 <id>attach-javadocs</id>

@@ -109,7 +109,7 @@ Add the plugin to a Maven project:
     <plugin>
       <groupId>com.scrupulouslysifted.sift</groupId>
       <artifactId>sift-uml-plugin</artifactId>
-      <version>1.0.0-SNAPSHOT</version>
+      <version>1.0.0</version>
       <executions>
         <execution>
           <id>generate-uml</id>
@@ -137,11 +137,29 @@ mvn process-classes
 Or invoke a goal directly:
 
 ```bash
-mvn com.scrupulouslysifted.sift:sift-uml-plugin:1.0.0-SNAPSHOT:generate-uml
-mvn com.scrupulouslysifted.sift:sift-uml-plugin:1.0.0-SNAPSHOT:classdiagram
-mvn com.scrupulouslysifted.sift:sift-uml-plugin:1.0.0-SNAPSHOT:sequencediagram
-mvn com.scrupulouslysifted.sift:sift-uml-plugin:1.0.0-SNAPSHOT:adr
+mvn com.scrupulouslysifted.sift:sift-uml-plugin:1.0.0:generate-uml
+mvn com.scrupulouslysifted.sift:sift-uml-plugin:1.0.0:classdiagram
+mvn com.scrupulouslysifted.sift:sift-uml-plugin:1.0.0:sequencediagram
+mvn com.scrupulouslysifted.sift:sift-uml-plugin:1.0.0:adr
 ```
+
+## Releasing to Maven Central
+
+To publish this project for public Maven use, follow this sequence:
+
+1. Make sure the project is at a release version such as `1.0.0` and not `-SNAPSHOT`.
+2. Create a GPG signing key for artifact integrity.
+3. Add Sonatype Central credentials to `~/.m2/settings.xml` using a `central` server entry.
+4. Run:
+
+```bash
+mvn clean test
+mvn clean deploy -P release
+```
+
+5. Open Sonatype Central, review the staged upload, and publish it to make the artifact public.
+
+This repository is already configured for the standard Central flow: release signing is in the parent POM, Javadocs are generated with custom tag support, and the Sonatype publishing plugin is enabled.
 
 ## Common configuration options
 

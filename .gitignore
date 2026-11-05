@@ -1,3 +1,7 @@
+.idea/
+.claude/
+.copilot/
+*/target/*
 # Compiled class file
 *.class
 

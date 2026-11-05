@@ -24,7 +24,7 @@
     <cyclonedx.version>2.9.0</cyclonedx.version>
     <dependency-check.version>12.1.0</dependency-check.version>
     <gpg.plugin.version>3.2.5</gpg.plugin.version>
-    <source.plugin.version>3.3.1</source.plugin.version>
+    <source.plugin.version>3.4.0</source.plugin.version>
     <javadoc.plugin.version>3.8.0</javadoc.plugin.version>
   </properties>
 

@@ -37,7 +37,7 @@
     <maven.version>3.9.9</maven.version>
     <maven.plugin.tools.version>3.13.1</maven.plugin.tools.version>
     <enforcer.skip>false</enforcer.skip>
-    <security.skip>false</security.skip>
+    <security.skip>true</security.skip>
     <cyclonedx.version>2.9.0</cyclonedx.version>
     <dependency-check.version>12.1.0</dependency-check.version>
     <gpg.plugin.version>3.2.5</gpg.plugin.version>
@@ -123,6 +123,7 @@
               <failBuildOnCVSS>8</failBuildOnCVSS>
               <format>HTML,JSON</format>
               <outputDirectory>${project.build.directory}/dependency-check</outputDirectory>
+              <nvdApiKey>${env.NVD_API_KEY}</nvdApiKey>
               <suppressionFiles>
                 <suppressionFile>${project.basedir}/.github/dependency-check-suppressions.xml</suppressionFile>
               </suppressionFiles>
@@ -136,6 +137,9 @@
   <profiles>
     <profile>
       <id>release</id>
+      <properties>
+        <security.skip>false</security.skip>
+      </properties>
       <build>
         <plugins>
           <plugin>
@@ -186,6 +190,7 @@
                   <goal>sign</goal>
                 </goals>
                 <configuration>
+                  <passphrase>${env.GPG_PASSPHRASE}</passphrase>
                   <gpgArguments>
                     <arg>--batch</arg>
                     <arg>--pinentry-mode</arg>

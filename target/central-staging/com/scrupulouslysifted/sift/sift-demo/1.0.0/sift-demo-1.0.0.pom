@@ -1,0 +1,73 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.scrupulouslysifted.sift</groupId>
+    <artifactId>sift-parent</artifactId>
+    <version>1.0.0</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+
+  <artifactId>sift-demo</artifactId>
+
+  <properties>
+    <maven.compiler.release>17</maven.compiler.release>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>com.scrupulouslysifted.sift</groupId>
+        <artifactId>sift-uml-plugin</artifactId>
+        <version>${project.version}</version>
+        <executions>
+          <execution>
+            <id>generate-uml</id>
+            <phase>process-classes</phase>
+            <goals>
+              <goal>generate-uml</goal>
+            </goals>
+            <configuration>
+              <title>Car Parking MLCP Dashboard</title>
+              <outputDirectory>${project.build.directory}/sift</outputDirectory>
+            </configuration>
+          </execution>
+          <execution>
+            <id>generate-classdiagram</id>
+            <phase>process-classes</phase>
+            <goals>
+              <goal>classdiagram</goal>
+            </goals>
+            <configuration>
+              <title>MLCP Class Diagram</title>
+              <outputDirectory>${project.build.directory}/sift</outputDirectory>
+            </configuration>
+          </execution>
+          <execution>
+            <id>generate-sequencediagram</id>
+            <phase>process-classes</phase>
+            <goals>
+              <goal>sequencediagram</goal>
+            </goals>
+            <configuration>
+              <title>MLCP Operations Sequence</title>
+              <outputDirectory>${project.build.directory}/sift</outputDirectory>
+            </configuration>
+          </execution>
+          <execution>
+            <id>generate-adr</id>
+            <phase>process-classes</phase>
+            <goals>
+              <goal>adr</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/sift</outputDirectory>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>
